@@ -1,0 +1,67 @@
+{% extends "header.html" %}
+
+{% block banner %}
+<div class="jumbotron" style="padding:0px;">
+    <img class="img-responsive" src="{{ url_for('static', filename='_images/one-plus.jpg') }}">
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h2 style="text-align:center;">MOBILE PHONES</h2>
+    <div class="row mob">
+
+        {% for item in items["Mobiles"] %}
+
+            <div class="col-sm-6 col-md-4 col-lg-3" style="margin-bottom:10px; max-width:280px; background-color:#fff; box-shadow: 1px 1px 1px 1px #c3c3c3">
+              
+                <img class="img-responsive img-rounded" src="{{items['Mobiles'][item][1]}}" style="height:250px; padding-top:20px;">
+                <a href="#" title="{{items['Mobiles'][item][0]}}" style="text-align:center;" >{{items["Mobiles"][item][0]}}</a>
+                <h6><strong>₹{{items["Mobiles"][item][2]}}</strong></h6>
+                <form method="post" action="" style="text-align:center;">    
+                    <div class="btn-group" style="padding-bottom:10px; color:#fff;">
+                        <button class="btn btn-sm btn-group" type="submit" name="btnbuynow" value="{{item}}" style="background:#ffbf00;">Buy Now</button>
+                        <button class="btn btn-sm btn-group" type="submit" name="btn-wish" value="{{item}}" style="background:#000099;"><span class="glyphicon glyphicon-plus"></span> WishList</button>
+                    </div>
+                </form>
+            </div>
+            
+            
+            
+            {% if loop.index is divisibleby 2 %}
+                <div class="clearfix visible-sm"></div>
+            {% endif %}
+            
+            {% if loop.index is divisibleby 3 %}
+                <div class="clearfix visible-md"></div>
+            {% endif %}
+            
+            {% if loop.index is divisibleby 4 %}
+                <div class="clearfix visible-lg"></div>
+            {% endif %}
+            
+        {% endfor %}
+        
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row" style="margin-top:20px;">
+        <img class="img-responsive" src="{{ url_for('static', filename='_images/mobiles/shopbyfeature.jpg') }}">
+        <div class="col-md-4" style="max-width:350px; margin-top:10px;">
+            <img class="img-responsive" src="{{ url_for('static', filename='_images/mobiles/screen-size.jpg') }}" style="height:150px;">
+        </div>
+        <div class="col-md-4" style="max-width:350px; margin-top:10px;">
+            <img class="img-responsive" src="{{ url_for('static', filename='_images/mobiles/fingerprint-sensor.jpg') }}" style="height:150px;">
+        </div>
+        <div class="col-md-4" style="padding-right:0px; max-width:350px; margin-top:10px;">
+            <img class="img-responsive" src="{{ url_for('static', filename='_images/mobiles/battery-capacity.jpg') }}" style="height:150px;">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+{% extends "header.html" %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mob">
+            {% if session.logged_in %}
+                {% if not wishlist %}
+                    <h2>Your Wishlist</h2>
+                    <p>Currently there is no item in the list.</p>
+                {% else %}
+                    <h2>Your Wishlist</h2>
+                    {% for wish in wishlist %}
+                        <div class="col-lg-3 col-md-4 col-sm-6" style="padding-top:20px; margin-top:20px; margin-right:3px; max-width:280px; background-color:#fff;">
+                            <img class="img-responsive img-rounded" src="{{wishlist[wish][1]}}" style="height:250px;">
+                            <div style="text-align:center;">
+                                <a href="#" title="{{wishlist[wish][0]}}"><strong>{{wishlist[wish][0]}}</strong></a>
+                                <h6><strong>₹{{wishlist[wish][2]}}</strong></h6>
+                                <form class="btn-group" method="post" action="" style="padding-bottom:10px; color:#fff;">
+                                    <button class="btn btn-sm btn-group" type="submit" name="btnplaceorder" style="background:#ffbf00;" value="btnplaceorder">Place Order Now</button>
+                                    <button class="btn btn-sm btn-group" type="submit" name="btn-del-wish" style="background:#995522;" value="{{wish}}"><span class="glyphicon glyphicon-minus"></span> Wishlist</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        {% if loop.index is divisibleby 2 %}
+                            <div class="clearfix visible-sm"></div>
+                        {% endif %}
+                        
+                        {% if loop.index is divisibleby 3 %}
+                            <div class="clearfix visible-md"></div>
+                        {% endif %}
+                        
+                        {% if loop.index is divisibleby 4 %}
+                            <div class="clearfix visible-lg"></div>
+                        {% endif %}
+                        
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+ 
+{% endblock %}

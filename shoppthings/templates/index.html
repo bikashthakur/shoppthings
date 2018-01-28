@@ -1,0 +1,79 @@
+{% extends "header.html" %}
+
+        {% block banner %}
+        
+            <div id="theCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#theCarousel" data-slide-to="1"></li>
+                    <li data-target="#theCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="slide1"></div>
+                        <div class="carousel-caption">
+                            <h1>Exclusive</h1>
+                            <p><a href="#" class="btn btn-primary btn-sm">Get Now</a></p>
+                        </div>
+                    </div> 
+                    <div class="item">
+                        <div class="slide2"></div>
+                        <div class="carousel-caption">
+                            <h1>Exclusive</h1>
+                            <p><a href="#" class="btn btn-primary btn-sm">Get Now</a></p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="slide3"></div>
+                        <div class="carousel-caption">
+                            <h1>Exclusive</h1>
+                            <p><a href="#" class="btn btn-primary btn-sm">Get Now</a></p>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span></a>
+                
+                <a class="right carousel-control" href="#theCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        {% endblock %}
+
+{% block body %}
+ 
+    <div class="container-fluid">
+            <div class="mob">
+                <h3>Mobile phones &nbsp;&nbsp;&nbsp;&nbsp;<a type="button" class="btn btn-default" href="/mobile-phones/" role="button">View all</a></h3>
+                
+                {% for item in items['Mobiles'] %}
+                
+                    <div class="col-lg-3 col-md-4 col-sm-6" style="max-width:280px; box-shadow: 1px 1px 1px 1px #c3c3c3;margin-bottom:10px;">
+                        <a href="#" class="btn btn-default btn-sm qView" role="button" style="margin-left:-15px;">Quick View</a>
+                        <form method="post" action="">
+                            <button class="btn btn-default btn-sm" type="submit" name="btn-wish" value="{{item}}" role="button" style="float:right; margin-right:-15px; margin-top:-30px;"><span class="glyphicon glyphicon-plus"></span> Wishlist</button>
+                        </form>
+                        <img class="img-responsive img-rounded" src="{{ items['Mobiles'][item][1] }}" style="height:250px; padding-top:20px;  padding-left:25px;">
+                        <a href="#" title="{{ items['Mobiles'][item][0] }}" style="text-align:center;">{{ items['Mobiles'][item][0] }}</a><br>
+                        <h6 style="color:#f78828; text-align:center;"><strike class="text-muted">₹{{ items['Mobiles'][item][2] }}</strike> {{ items['Mobiles'][item][3] }}% OFF ₹{{ items['Mobiles'][item][4] }}</h6>
+                        <form method="post" action="" style="padding-bottom:10px;">
+                            <button class="btn btn-default btn-md btn-block" type="submit" name="item" value="" role="button" style="background:#ffbf00;">Buy Now</button>
+                        </form>
+                    </div>
+                    
+                    {% if loop.index is divisibleby 2 %}
+                        <div class="clearfix visible-sm"></div>
+                    {% endif %}
+                    
+                    {% if loop.index is divisibleby 3 %}
+                        <div class="clearfix visible-md"></div>
+                    {% endif %}
+                    
+                    {% if loop.index is divisibleby 4 %}
+                        <div class="clearfix visible-lg"></div>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+        </div>
+    
+{% endblock %}

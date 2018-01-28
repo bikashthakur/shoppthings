@@ -1,0 +1,104 @@
+{% extends "header.html" %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row mob">
+            <h3>Men's clothing &nbsp;&nbsp;&nbsp;&nbsp;<a type="button" class="btn btn-default" href="/mens-clothing/" role="button">View all</a></h3>
+            
+            {% for item in items['MensClothing'] %}
+
+                <div class="col-sm-6 col-md-6 col-lg-3" style="max-width:280px; margin-bottom:10px;">
+                    <div class="container-fluid">
+                        <a href="#" class="btn btn-default btn-sm qView" role="button" style="margin-left:-30px;">Quick View</a>
+                        <form method="post" action="/store/">
+                            <button class="btn btn-default btn-sm" type="submit" name="btn-wish" value="{{item}}" role="button" style="float:right; margin-right:-30px; margin-top:-30px;"><span class="glyphicon glyphicon-plus"></span> Wishlist</button>
+                        </form>
+                        <img class="img-responsive img-rounded" src="{{ items['MensClothing'][item][1] }}" style="height:250px; padding-left:30px;">
+                        <a href="#" title="{{ items['MensClothing'][item][0] }}" style="text-align:center;">{{ items['MensClothing'][item][0] }}</a><br>
+                        <h6 style="color:#f78828;text-align:center;"><strike class="text-muted">₹{{ items['MensClothing'][item][2] }}</strike> {{ items['MensClothing'][item][3] }}% OFF ₹{{ items['MensClothing'][item][4] }}</h6>
+                        <form method="post" action="/store/" style="padding-bottom:10px;">
+                            <button class="btn btn-default btn-md btn-block" type="submit" name="item" value="{{item}}" role="button" style="background:#ffbf00;">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+                
+                {% if loop.index is divisibleby 2 %}
+                    <div class="clearfix visible-sm visible-md"></div>
+                {% endif %}
+                
+                {% if loop.index is divisibleby 4 %}
+                    <div class="clearfix visible-lg"></div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+    </div>
+        
+    <div class="container-fluid">
+        <div class="row mob">
+            <h3>Shoes &nbsp;&nbsp;&nbsp;&nbsp;<a type="button" class="btn btn-default" href="/mens-clothing/" role="button">View all</a></h3>
+            
+            {% for item in items['Shoes'] %}
+
+                <div class="col-sm-6 col-md-6 col-lg-3" style="max-width:280px; margin-bottom:10px;">
+                    <div class="container-fluid">
+                        <a href="#" class="btn btn-default btn-sm qView" role="button" style="margin-left:-30px;">Quick View</a>
+                        <form method="post" action="/store/">
+                            <button class="btn btn-default btn-sm" type="submit" name="btn-wish" value="{{item}}" role="button" style="float:right; margin-right:-30px; margin-top:-30px;"><span class="glyphicon glyphicon-plus"></span> Wishlist</button>
+                        </form>
+                        <img class="img-responsive img-rounded" src="{{ items['Shoes'][item][1] }}" style="height:250px; padding-left:30px;">
+                        <a href="#" title="{{ items['Shoes'][item][0] }}" style="text-align:center;">{{ items['Shoes'][item][0] }}</a><br>
+                        <h6 style="color:#f78828;text-align:center;"><strike class="text-muted">₹{{ items['Shoes'][item][2] }}</strike> {{ items['Shoes'][item][3] }}% OFF ₹{{ items['Shoes'][item][4] }}</h6>
+                        <form method="post" action="/store/" style="padding-bottom:10px;">
+                            <button class="btn btn-default btn-md btn-block" type="submit" name="item" value="{{item}}" role="button" style="background:#ffbf00;">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+                
+                {% if loop.index is divisibleby 2 %}
+                    <div class="clearfix visible-sm visible-md"></div>
+                {% endif %}
+                
+                {% if loop.index is divisibleby 4 %}
+                    <div class="clearfix visible-lg"></div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+    </div>
+        
+        
+        
+    <div class="container-fluid">
+        <div class="row mob">
+            <h3>Mobile phones &nbsp;&nbsp;&nbsp;&nbsp;<a type="button" class="btn btn-default" href="/mens-clothing/" role="button">View all</a></h3>
+            
+            {% for item in items['Mobiles'] %}
+
+                <div class="col-sm-6 col-md-6 col-lg-3" style="max-width:280px; margin-bottom:10px;">
+                    <div class="container-fluid">
+                        <a href="#" class="btn btn-default btn-sm qView" role="button" style="margin-left:-30px; visibile:none;">Quick View</a>
+                        <form method="post" action="/store/">
+                            <button class="btn btn-default btn-sm" type="submit" name="btn-wish" value="{{item}}" role="button" style="float:right; margin-right:-30px; margin-top:-30px;"><span class="glyphicon glyphicon-plus"></span> Wishlist</button>
+                        </form>
+                        <img class="img-responsive img-rounded" src="{{ items['Mobiles'][item][1] }}" style="height:250px; padding-left:30px;">
+                        <a href="#" title="{{ items['Mobiles'][item][0] }}" style="text-align:center;">{{ items['Mobiles'][item][0] }}</a><br>
+                        <h6 style="color:#f78828;text-align:center;"><strike class="text-muted">₹{{ items['Mobiles'][item][2] }}</strike> {{ items['Mobiles'][item][3] }}% OFF ₹{{ items['Mobiles'][item][4] }}</h6>
+                        <form method="post" action="/store/" style="padding-bottom:10px;">
+                            <button class="btn btn-default btn-md btn-block" type="submit" name="item" value="{{item}}" role="button" style="background:#ffbf00;">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+                
+                {% if loop.index is divisibleby 2 %}
+                    <div class="clearfix visible-sm visible-md"></div>
+                {% endif %}
+                
+                {% if loop.index is divisibleby 4 %}
+                    <div class="clearfix visible-lg"></div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

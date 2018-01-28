@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ShoppThings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/jumbotron-narrow.css')}}" rel="stylesheet">
+</head>
+<header>
+    <div class="container-fluid">
+    <div class="page-header">
+        <img class="img-responsive" src="{{ url_for('static', filename='_images/cover.jpg') }}" style="height:100px; width=100%;">
+    </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">        
+        
+            <ul class="nav navbar-nav">
+                <li><a href="#">
+                            <img class="img-circle img-responsive" style="max-width:60px;" src="/static/_images/main_logo.jpg"></a></li>
+                <li>
+                    <a class="navbar-brand" href="#">
+                                <!--b style="color:#f79a47;">Shopp</b><b style="color:#FFC107">Th</b><b style="color:#f79a47;">ings</b-->
+                                <h1><b>ShoppThings</b></h1>
+                    </a>
+                </li>
+                
+                <li><a href="/home/" class="icon home"><span class="glyphicon glyphicon-home"></span><b>&nbsp;Home</b></a></li>
+                
+            </ul>
+    
+    
+                        
+    
+        <div class="navbar-header  navbar-right">
+            <!--div style="margin-right:10px; margin-left:15px; margin-top:5px; margin-bottom:5px;" -->
+             <ul class="nav navbar-nav">
+                    <!--div style="margin-top:20px;"-->
+                    {% if session.logged_in %}
+                        <!-- a href="/dashboard"><span class="glyphicon glyphicon-people"></span>&nbsp;{{username}}&nbsp;&nbsp;</a -->
+                        <li><a href="/home/" style="margin-left:15px; color:#ddd"><span class="glyphicon glyphicon-log-out"></span> Home&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="/dashboard/"><span class="glyphicon glyphicon-log-out"></span> Dashboard&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="/support-donate/"><span class="glyphicon glyphicon-heart"></span> Support&nbsp;&nbsp;&nbsp;</a></li>
+                    {% else %}
+                        <li><a href="/support-donate/"><span class="glyphicon glyphicon-heart"></span> Support&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="/login/">
+                                <button type="button" class="btn btn-primary" aria-label="Left-Align"
+                                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Sign in
+                                </button>
+                            </a>
+                        </li>
+                       <li><a href="/register/">
+                        <button type="button" class="btn btn-success" aria-label="Left-Align">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Sign up
+                        </button>
+                       </a></li>
+                    {% endif %}
+                    <!--/div>
+                    <!-- a role="presentation" class="active" data-toggle="modal" data-target="#exampleModal" href="#">
+                        <span class="glyphicon glyphicon-log-in"</span> Login&nbsp;&nbsp;&nbsp;</a -->
+                        
+                    <!-- div class="modal-fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <form action="" class="form-inline" method="post">
+                                            <input type="text" class="form-control" placeholder="Username" name="username" value="">
+                                             <input type="password" class="form-control" placeholder="Password" name="password" value="">
+                                             <input class="btn btn-primary" type="submit" value="Login">
+                                        </form>
+                                        
+                                        <div class="container">
+                                            <br>
+                                            <p>No accoutn? <a href='/register'>Register here</a></p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div -->
+               
+            <!--/div-->
+           </ul>
+         </div>
+      </div>
+    </nav>
+    
+</header>
+<body class="container-fluid" style="padding:0px; margin:0px;">
+    
+    <div class="border-row" style="height:5px; width:100%;background-color:black;"></div>
+    <div class="container-fluid" style="width:80%;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block body %} {% endblock %}
+    </div>
+    <footer class="footer">
+        <p>&copy; Company 2015</p>
+    </footer>
+    
+</body>
+    
+    <!-- script type="text/javascript" src="url_for('static', filename='jquery-1.12.4.min.js'"></script>
+    <script type="text/javascript" src="url_for('static', filename='bootstrap.min.js'"></script -->
+   <script type="text/javascript" src="{{url_for('static', filename='jquery-1.12.4.min.js')}}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename='bootstrap.min.js')}}"></script>    
+ </html>
+ 
+ <li><a href="/home/" style="padding-top:25px;" aria-label="Left-Align"><span class="glyphicon glyphicon-home"></span><b>&nbsp;Home</b></a></li>

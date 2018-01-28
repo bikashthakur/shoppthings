@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ShoppThings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/jumbotron-narrow.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+   
+</head>
+<header>
+    <div class="container" style="margin-top:-15px;margin-bottom:-15px;">
+        <div class="page-header" style="padding-bottom:0px; margin-bottom:0px; margin-top:0px; position:center;">
+            <img class="img-responsive" src="{{ url_for('static', filename='_images/cover.jpg') }}" style="width:400px;">
+        </div>
+    </div>
+    <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
+        <nav class="navbar navbar-inverse" style="margin-bottom:0px; border-radius:25px;">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#rightNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header">
+                <img class="img-rounded img-responsive" style="width:180px; border-radius:25px;" src="/static/_images/main-logo.jpg">
+            </div>
+
+            <div class="collapse navbar-collapse" id="rightNavBar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/" class="active" style="padding-right:0px;"><span class="glyphicon glyphicon-home"></span><strong>&nbsp;Home&nbsp;</strong></a></li>
+                    <li><a href="/store/" style="padding-right:0px;"><span class="glyphicon glyphicon-shopping-cart"></span><strong>&nbsp;Store&nbsp;</strong></a></li>             
+                    <li><a href="/get-wishlist/" style="padding-right:0px;"><span class="glyphicon glyphicon-heart"></span><strong>&nbsp;Wishlist&nbsp;</strong></a></li>
+                    {% if session.logged_in %}
+                        <li><a href="/logout/" style="padding-right:0px;"><span class="glyphicon glyphicon-log-out"></span><strong>&nbsp;Logout&nbsp;&nbsp;&nbsp;</strong></a></li>
+                    {% else %}
+                        <li><a href="/login/" style="padding-top:10px; padding-bottom:0px; padding-right:0px;">
+                            <button type="button" class="btn btn-primary btn-sm" aria-label="Left-Align"
+                                <span class="glyphicon glyphicon-signin"></span>Sign in
+                            </button>
+                        </a></li>
+
+                        <li><a href="/register/" style="padding-top:10px; padding-bottom:0px; padding-right:0px; margin-right:10px;">
+                            <button type="button" class="btn btn-success btn-sm" aria-label="Left-Align">
+                                    <span class="glyphicon glyphicon-signup"></span>&nbsp;Sign up&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </a></li>
+                    {% endif %}
+               
+            </ul>
+        </div>
+      </nav>
+    </div>
+</header>
+<body style="padding-top:0px;">
+    <ul style="background:#d888; list-style:none;">
+        <li><a href="/mens-clothing/" style="padding-top:20px; padding-left:10px; padding-right:10px; margin-bottom:10px; display:block; float:left;">MEN</a></li>
+        <li><a href="/store/" style="padding-top:20px; padding-left:10px; padding-right:10px; margin-bottom:10px; display:block; float:left;">WOMEN</a></li>
+        <li><a href="/mobile-phones/" style="padding-top:20px; padding-left:10px; padding-right:10px; margin-bottom:10px; display:block; float:left;">MOBILE</a></li>
+        <li><a href="/mens-clothing/" style="padding-top:20px; padding-left:10px; padding-right:10px; margin-bottom:10px; display:block; float:left;">OFFER ZONE</a></li>
+        <li><a href="#" style="padding-top:20px; padding-left:10px; padding-right:10px; margin-bottom:10px; display:block; float:left;">ELECTRONICS</a></li>
+        <li class="input-group" style="max-width:500px; padding-top:8px; padding-left:10px; padding-right:10px; margin-bottom:10px; float:right;">
+            <input type="text" class="form-control" placeholder="search shoppTHings...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" title="Search for products" style="background:#ffbf00;"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+        </li>
+    </ul>
+    
+    
+        
+    <div id="banner" style="margin-top:50px;">
+        {% block banner%} {% endblock %}
+    </div>
+    <!--div class="border-row" style="height:5px; width:100%;background-color:black;"></div-->
+    <div class="container" id="msg-flash" style="margin-top:15px;">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div style="padding-left:50px;">
+        {% block body %} {% endblock %}
+    </div>
+    
+    <footer class="footer" style="text-align:center;">
+        <p>&copy; <a href="/">shoppTHings</a> 2016</p>
+    </footer>
+    
+</body>
+    
+    <!-- script type="text/javascript" src="url_for('static', filename='jquery-1.12.4.min.js'"></script>
+    <script type="text/javascript" src="url_for('static', filename='bootstrap.min.js'"></script -->
+   <script type="text/javascript" src="{{url_for('static', filename='jquery-1.12.4.min.js')}}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename='bootstrap.min.js')}}"></script>    
+ </html>

@@ -1,0 +1,32 @@
+{% extends "header.html" %}
+{% block body %}
+  <!-- link href="{{url_for('static', filename='css/signin.css')}}" rel="stylesheet" -->
+
+    <div class="container-fluid">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            {% if error %}
+                    <h5 class="error" style="margin-top:15px; margin-bottom:0px; "><strong>{{ error }}</strong></h5>
+            {% endif %}
+            <form class="form-signin" action="" method="post"> 
+                <h3 style="margin-top:50px;">LOGIN</h3>
+                
+                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" style="height:40px; margin-top:10px; margin-bottom:15px; border-radius:0px;" value="{{request.form.email}}"  required autofocus>
+                
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" style="height:40px;  border-radius:0px; margin-bottom:15px;" value="{{request.form.password}}" required>
+                
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" required> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit" style="height:45px; width:120px; margin-bottom:20px; border: 1px solid #bbb; background:#f78828;">LOGIN</button> 
+            </form>
+            
+            <div>
+                <p>New to <a href="/">shoppTHings</a>?<a href='/register/'> &nbsp;SIGNUP here</a></p>
+            </div>
+        </div>
+    </div>
+
+  
+{% endblock %}
